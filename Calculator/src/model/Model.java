@@ -10,10 +10,6 @@ public class Model {
 	private static final int MAX_LENGTH = 11;
 	private static Function<String, Double> toDouble = Double::parseDouble;
 
-	public Model() {
-		new Model();
-	}
-
 	public static String makeItSuitable(String num) {
 		if (num.length() <= MAX_LENGTH) {
 			if (num.charAt(num.length() - 1) == '0')
@@ -53,8 +49,7 @@ public class Model {
 						if (e.value() != null && Double.isFinite(toDouble.apply(e.value()))) {
 							System.out.printf("%s = %s\n", toJShell, e.value());
 							return toDouble.apply(e.value());
-						}
-						else
+						} else
 							throw new IllegalArgumentException("Illegal operation!");
 					default:
 						System.out.printf("Error\n");
@@ -73,7 +68,7 @@ public class Model {
 		if (op.equals("fact")) {
 			if ((int) numD != numD)
 				throw new IllegalArgumentException("Illegal operation!");
-			if( numD > 10 )
+			if (numD > 10)
 				throw new IllegalArgumentException("Too big number!");
 			String fact = "public static int factorial(int num) {\r\n if (num == 0 || num == 1)\r\n return 1;\r\n else\r\n return num * factorial(num - 1);\r\n }";
 			jshell.eval(fact);
