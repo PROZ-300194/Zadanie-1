@@ -1,0 +1,43 @@
+.button{
+	-fx-font-size: 19;
+	-fx-font-weight: 900;
+	-fx-border-color: #000000;
+}
+
+.label{
+	-fx-background-color: #b5d5ff;
+	-fx-font-size: 40;
+	-fx-font-weight: 600;
+}
+
+.regular{
+	-fx-background-color: #94c2ff;
+}
+
+.actions{
+	-fx-background-color: #7ab3ff;
+}
+
+.cButton{
+	-fx-background-color: #4796ff;
+}
+
+.regular:hover{
+	-fx-background-color: #FFFFFF;
+}
+
+.actions:hover{
+	-fx-background-color: #DDDDDD;
+}
+
+.vbox{
+	-fx-background-color: #BBBBBB;	
+}
+
+.cButton:hover{
+	-fx-background-color: #BBBBBB;
+}
+
+.button:pressed{
+	-fx-background-color: #0e55b3;
+}
