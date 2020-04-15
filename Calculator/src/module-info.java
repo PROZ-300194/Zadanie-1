@@ -1,7 +1,5 @@
 /**
  * 
- */
-/**
  * @author chmie
  *
  */
@@ -10,6 +8,7 @@ module src {
 	requires javafx.fxml;
 	requires transitive javafx.base;
 	requires transitive javafx.controls;
+	requires javafx.graphics;
 
 	opens controllers;
 

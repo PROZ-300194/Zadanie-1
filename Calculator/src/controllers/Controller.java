@@ -8,6 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import model.Model;
 
+/**
+ * Kontroler odpowiedzialny za odpowiednie reakcje i kierowanie do innych
+ * metod/klas po naciœnieciu danego przycisku
+ * 
+ * @author Daniel_Chmielewiec
+ *
+ */
 public class Controller {
 
 	private final int MAX_LENGTH = 11;
@@ -21,10 +28,19 @@ public class Controller {
 	@FXML
 	private Label label;
 
+	/**
+	 * Metoda inicjalizuj¹ca - ustawia pocz¹tkow¹ wartoœæ "0" na wyœwietlaczu
+	 * kalkulatora
+	 */
 	public void initialize() {
 		label.setText("0");
 	}
 
+	/**
+	 * Metoda opdowiedzialna za dzia³anie po wciœnieciu przycisków liczbowych i "."
+	 * 
+	 * @param e Zawiera informacje o nasta³ym "wydarzeniu" (wciœnieciu przycisku)
+	 */
 	@FXML
 	public void numButton(ActionEvent e) {
 		String buttonText = ((Button) e.getSource()).getText();
@@ -53,6 +69,14 @@ public class Controller {
 		label.setText(value);
 	}
 
+	/**
+	 * Metoda odpowiedzialna za dzia³anie po wciœnieciu przycisków operatorów
+	 * dwuargumentowych
+	 * 
+	 * @param e Zawiera informacje o nasta³ym "wydarzeniu" (wciœnieciu przycisku)
+	 * @exception IllegalArgumentException Zg³aszany gdy wynik przekroczy maksymaln¹
+	 *                                     dozwolon¹ wartoœæ
+	 */
 	@FXML
 	public void opButton2Arg(ActionEvent e) {
 		Function<ActionEvent, String> getOp = x -> ((Button) x.getSource()).getText();
@@ -88,6 +112,12 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * Metoda odpowiedzialna za dzia³anie po wciœnieciu przycisków operatorów
+	 * jednoargumentowych
+	 * 
+	 * @param e Zawiera informacje o nasta³ym "wydarzeniu" (wciœnieciu przycisku)
+	 */
 	@FXML
 	public void opButton1Arg(ActionEvent e) {
 		Function<ActionEvent, String> getId = x -> ((Button) x.getSource()).getId();
@@ -110,6 +140,9 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * Metoda odpowiadaj¹ca za wciœniecia przycisku "C"
+	 */
 	@FXML
 	public void cButton() {
 		label.setText("0");
@@ -119,7 +152,13 @@ public class Controller {
 		newNumberFlag = true;
 	}
 
-	public void errorWindow(String errorMsg) {
+	/**
+	 * Metoda wyœwietlaj¹ca alert "Error"
+	 * 
+	 * @param errorMsg Wiadomoœæ przekazana po wyst¹pieniu b³edu wyœwietlana
+	 *                 nastêpnie w alercie
+	 */
+	public static void errorWindow(String errorMsg) {
 		Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 		errorAlert.setTitle("Error");
 		errorAlert.setHeaderText(errorMsg);

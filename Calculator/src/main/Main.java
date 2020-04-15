@@ -6,12 +6,24 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Klasa main rozpoczynaj¹ca dzia³anie programu
+ * @author Daniel_Chmielewiec
+ *
+ */
 public class Main extends Application {
 
+	/**
+	 * Metoda rozpoczynaj¹ca dzia³anie programu
+	 * @param args Argumenty podane wraz z rozpoczêciem programu
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
 
+	/**
+	 * Metoda wyœwietlaj¹ca okienko kalkulatora
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/fxml/CalcScreen.fxml"));
