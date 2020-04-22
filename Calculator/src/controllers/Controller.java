@@ -37,7 +37,7 @@ public class Controller {
 	}
 
 	/**
-	 * Metoda opdowiedzialna za dzia³anie po wciœnieciu przycisków liczbowych i "."
+	 * Metoda odpowiedzialna za dzia³anie po wciœnieciu przycisków liczbowych i '.'
 	 * 
 	 * @param e Zawiera informacje o nasta³ym "wydarzeniu" (wciœnieciu przycisku)
 	 */
@@ -63,7 +63,7 @@ public class Controller {
 		else if (value.equals("0") && !buttonText.equals("."))
 			value = buttonText;
 		else {
-			value = value + buttonText;
+			value += buttonText;
 		}
 		doubleOpFlag = false;
 		label.setText(value);
@@ -80,6 +80,7 @@ public class Controller {
 	@FXML
 	public void opButton2Arg(ActionEvent e) {
 		Function<ActionEvent, String> getOp = x -> ((Button) x.getSource()).getText();
+
 		if (op.equals("") && getOp.apply(e).equals("=") || doubleOpFlag) {
 			if (doubleOpFlag && !getOp.apply(e).equals("="))
 				op = getOp.apply(e);
@@ -121,6 +122,7 @@ public class Controller {
 	@FXML
 	public void opButton1Arg(ActionEvent e) {
 		Function<ActionEvent, String> getId = x -> ((Button) x.getSource()).getId();
+		
 		if (label.getText().equals("") || label.getText().equals("Error!"))
 			return;
 		else {

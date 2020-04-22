@@ -1,1 +1,1 @@
-moduleSearchIndex = [{"l":"src"}]
+moduleSearchIndex = [{"l":"Calculator"}]

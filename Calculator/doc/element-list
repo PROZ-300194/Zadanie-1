@@ -1,4 +1,4 @@
-module:src
+module:Calculator
 controllers
 main
 model

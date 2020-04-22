@@ -22,17 +22,21 @@ public class Main extends Application {
 	}
 
 	/**
-	 * Metoda wyœwietlaj¹ca okienko kalkulatora
+	 * Metoda wyœwietlaj¹ca okienko kalkulatora i ustawiaj¹ca jego podstawowe parametry
 	 */
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/fxml/CalcScreen.fxml"));
-		VBox vbox = loader.load();
-		Scene scene = new Scene(vbox);
-		primaryStage.setScene(scene);
-		primaryStage.setResizable(false);
-		primaryStage.setTitle("Calculator");
-		primaryStage.show();
+	public void start(Stage primaryStage) {
+		try {
+			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/fxml/CalcScreen.fxml"));
+			VBox vbox = loader.load();
+			Scene scene = new Scene(vbox);
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.setTitle("Calculator");
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 }
