@@ -1,12 +1,15 @@
 package controllers;
 
 import java.util.function.Function;
+
+import expression.Expression;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import model.Model;
+import rest.RestClient;
 
 /**
  * Kontroler odpowiedzialny za odpowiednie reakcje i kierowanie do innych
@@ -24,6 +27,7 @@ public class Controller {
 	private String num1 = "";
 	private boolean newNumberFlag = false;
 	private boolean doubleOpFlag = false;
+	private RestClient restClient;
 
 	@FXML
 	private Label label;
@@ -33,6 +37,7 @@ public class Controller {
 	 * kalkulatora
 	 */
 	public void initialize() {
+		restClient = new RestClient();
 		label.setText("0");
 	}
 
@@ -93,7 +98,8 @@ public class Controller {
 			dotFlag = false;
 		} else {
 			try {
-				double result = Model.calculate(num1, label.getText(), op);
+				double result = restClient.goRest(new Expression(num1, op, label.getText()));
+				//double result = Model.calculate(num1, label.getText(), op);
 				if (result > MAX_VALUE)
 					throw new IllegalArgumentException("Too big number!");
 				num1 = Model.makeItSuitable(Double.toString(result));
@@ -128,7 +134,8 @@ public class Controller {
 		else {
 			op = getId.apply(e);
 			try {
-				double result = Model.calculate(label.getText(), op);
+				double result = restClient.goRest(new Expression(label.getText(), op));
+				//double result = Model.calculate(label.getText(), op);
 				num1 = Model.makeItSuitable(Double.toString(result));
 				label.setText(num1);
 				newNumberFlag = true;

@@ -1,2 +1,0 @@
-JAVA_VERSION="14"
-MODULES="java.base java.datatransfer java.xml java.prefs java.desktop javafx.base jdk.unsupported javafx.graphics javafx.controls java.scripting javafx.fxml java.compiler java.logging jdk.compiler jdk.internal.ed jdk.internal.le jdk.internal.opt jdk.internal.jvmstat jdk.attach jdk.jdwp.agent jdk.jdi jdk.jshell Calculator"

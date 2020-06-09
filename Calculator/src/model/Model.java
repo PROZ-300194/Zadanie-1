@@ -1,11 +1,13 @@
 package model;
 
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import jdk.jshell.JShell;
-import jdk.jshell.SnippetEvent;
+import expression.Expression;
+
+//import java.util.List;
+//import java.util.function.Function;
+//import java.util.stream.Collectors;
+//import java.util.stream.Stream;
+//import jdk.jshell.JShell;
+//import jdk.jshell.SnippetEvent;
 
 /**
  * Klasa zajmuj¹ca siê obliczeniami. Brak konstruktora, poniewa¿ obiekt klasy
@@ -17,7 +19,7 @@ import jdk.jshell.SnippetEvent;
 public class Model {
 
 	private static final int MAX_LENGTH = 11;
-	private static Function<String, Double> toDouble = Double::parseDouble;
+	//private static Function<String, Double> toDouble = Double::parseDouble;
 
 	/**
 	 * Metoda odpowiednio formatuj¹ca wyœwietlany wynik na wyœwietlaczu kalkulatora
@@ -36,6 +38,17 @@ public class Model {
 			return num;
 		}
 	}
+	
+	public static void checkIfLegal(Expression expression) {
+		if(expression.getOp().equals("/") && expression.getSecondNum().equals("0"))
+			throw new IllegalArgumentException("Dividing by 0!");
+		if(expression.getOp().equals("sqrt") && Double.parseDouble(expression.getFirstNum()) < 0)
+			throw new IllegalArgumentException("Square root of negative number!");
+		if(expression.getOp().equals("fact") && (int) Double.parseDouble(expression.getFirstNum()) != Double.parseDouble(expression.getFirstNum()))
+			throw new IllegalArgumentException("Factorial of not integer number!");
+		if(expression.getOp().equals("fact") && Double.parseDouble(expression.getFirstNum()) > 10)
+			throw new IllegalArgumentException("Too big number!");
+	}
 
 
 	/**
@@ -48,7 +61,7 @@ public class Model {
 	 *                                     nielegalnego dzia³ania np dzielenia przez
 	 *                                     0
 	 */
-	public static double jshellFun(String toJShell, @SuppressWarnings("exports") JShell jshell) {
+	/*public static double jshellFun(String toJShell, @SuppressWarnings("exports") JShell jshell) {
 		try (jshell) {
 			List<SnippetEvent> events = jshell.eval(toJShell);
 			for (SnippetEvent e : events) {
@@ -68,7 +81,7 @@ public class Model {
 			}
 		}
 		return 0;
-	}
+	}*/
 
 	/**
 	 * Metoda tworzy instrukcjê dla dzia³añ dwuargumentowych do wykonania w konsoli
@@ -79,7 +92,7 @@ public class Model {
 	 * @param op    Operator jako "String"
 	 * @return Wynik wykonania operacji
 	 */
-	public static double calculate(String num1S, String num2S, String op) {
+	/*public static double calculate(String num1S, String num2S, String op) {
 		var jshell = JShell.create();
 		String toJShell;
 		var num1D = toDouble.apply(num1S);
@@ -92,7 +105,7 @@ public class Model {
 					.collect(Collectors.joining());
 		}
 		return jshellFun(toJShell, jshell);
-	}
+	}*/
 
 	/**
 	 * Metoda tworzy instrukcjê dla dzia³añ jednoargumentowych do wykonania w
@@ -105,7 +118,7 @@ public class Model {
 	 *                                     nielegalnego dzia³ania lub gdy wynik
 	 *                                     przekroczy maksymaln¹ dozwolon¹ wartoœæ
 	 */
-	public static double calculate(String numS, String op) {
+	/*public static double calculate(String numS, String op) {
 		var jshell = JShell.create();
 		var sb = new StringBuilder();
 		double numD = toDouble.apply(numS);
@@ -123,6 +136,6 @@ public class Model {
 
 		var toJShell = sb.toString();
 		return jshellFun(toJShell, jshell);
-	}
+	}*/
 
 }
